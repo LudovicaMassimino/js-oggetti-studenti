@@ -22,26 +22,38 @@ for(let i = 0; i < studenti.length; i++){
     const età = studente.età
 
     console.log(nome, cognome, età)
-    // creo la variabile per il nuovo studente
-    const nuovoStudente = {
-        nome: nome,
-        cognome: cognome,
-        età: età
-    };
-    console.log(nuovoStudente)
-    // pusho il nuovo studente nell'array di studenti
-    studenti.push(nuovoStudente)
-    console.log(studenti)
-
+   
     appendTableHtml(studente);
 } 
 
 function appendTableHtml(member){
     const tBodyElement = document.getElementById('table-body')
+    /* const trHTML =
+    '<tr>' +
+    '<td>' + 
+        nome +
+    '</td>' +
+    '<td>' +
+        cognome +
+    '</td>' +
+    '<td>' +
+        età +   
+    '</td>' +
+    '</tr>'  */
+
+// ottimizzato con backtick e ${}
+const trHTML = `
+    <tr>
+    <td>${member.nome}</td>
+    <td>${member.cognome}</td>
+    <tr>${member.età}</tr>
+    `
+
+tBodyElement.innerHTML += trHTML
 }
 
 
-const form = document.getElementById(form-add-students)
+const form = document.getElementById('form-add-students')
 console.log(form)
 form.addEventListener('submit', aggiungiStudente)
 
@@ -53,27 +65,18 @@ function aggiungiStudente(e) {
     const cognome = document.getElementById("cognome").value
     const età = document.getElementById("età").value
 
-    console.log
-}
-/* const trHTMLString =
-'<tr>' +
-'<td>' + 
-    nome +
-'</td>' +
-'<td>' +
-    cognome +
-'</td>' +
-'<td>' +
-    età +
-'</td>' +
-'</tr>'  */
+     // creo la variabile per il nuovo studente
 
-// ottimizzato con backtick e ${}
-const trHTMLString = `
-<tr>
-<td>${member.nome}</td>
-<td>${member.cognome}</td>
-<tr>${member.età}</tr>
-`
-tBodyElement.innerHTML += trHTMLString
+    const nuovoStudente = {
+        nome: nome,
+        cognome: cognome,
+        età: età
+    };
+    console.log(nuovoStudente)
 
+    // pusho il nuovo studente nell'array di studenti
+    studenti.push(nuovoStudente)
+    console.log(studenti)
+
+    appendTableHtml(nuovoStudente);
+} 
