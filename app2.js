@@ -1,28 +1,79 @@
-// BONUS: FORM
+// rifare l'esercizio con il FORM
 
-// prendo le info dagli input di nome, cognome, età:
-const nomeInputElement = document.getElementById('nome')
-const cognomeInputElement = document.getElementById('cognome')
-const ageInputElement = document.getElementById('age')
+const studenti = [
+    {nome: 'Giorgio', cognome:'Giorgini', età: '23'},
+    {nome: 'Fabio', cognome:'Fabiani', età: '19'},
+    {nome: 'Elena', cognome:'Elenati', età: '29'},
+    {nome: 'Francesca', cognome:'Franceschini', età: '31'},
+    {nome: 'Giulia', cognome:'Giuliani', età: '35'},
+]
 
-console.log(nomeInputElement , cognomeInputElement , ageInputElement)
+console.log(studenti)
 
-// button e ascolto click:
-const buttonElement = document.getElementById('submit')
+const tBodyElement = document.getElementById('table-body')
+console.log(tBodyElement)
 
-buttonElement.addEventListener('click' , function () {
-    console.log('click su Invia')
-    
-    const nome = nomeInputElement.value ; 
-    const cognome = cognomeInputElement.value ; 
-    const età = ageInputElement.value ;
-    
-    console.log("I dati che ha inserito l'utente sono: " + nome, cognome, età)
+// Ciclare su tutti gli studenti e stampare, per ognuno di essi, nome, cognome, età:
 
-    const dati = ' ' + nome + ' ' + cognome + ' ' + età + ' anni' ;
+for(let i = 0; i < studenti.length; i++){
+    const studente = studenti[i]
+    const nome = studente.nome
+    const cognome = studente.cognome
+    const età = studente.età
 
-    const datiElement = document.getElementById('dati')
-     console.log(datiElement)
-     datiElement.innerHTML = dati;
-})
+    console.log(nome, cognome, età)
+    // creo la variabile per il nuovo studente
+    const nuovoStudente = {
+        nome: nome,
+        cognome: cognome,
+        età: età
+    };
+    console.log(nuovoStudente)
+    // pusho il nuovo studente nell'array di studenti
+    studenti.push(nuovoStudente)
+    console.log(studenti)
+
+    appendTableHtml(studente);
+} 
+
+function appendTableHtml(member){
+    const tBodyElement = document.getElementById('table-body')
+}
+
+
+const form = document.getElementById(form-add-students)
+console.log(form)
+form.addEventListener('submit', aggiungiStudente)
+
+function aggiungiStudente(e) {
+    console.log(e);
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value
+    const cognome = document.getElementById("cognome").value
+    const età = document.getElementById("età").value
+
+    console.log
+}
+/* const trHTMLString =
+'<tr>' +
+'<td>' + 
+    nome +
+'</td>' +
+'<td>' +
+    cognome +
+'</td>' +
+'<td>' +
+    età +
+'</td>' +
+'</tr>'  */
+
+// ottimizzato con backtick e ${}
+const trHTMLString = `
+<tr>
+<td>${member.nome}</td>
+<td>${member.cognome}</td>
+<tr>${member.età}</tr>
+`
+tBodyElement.innerHTML += trHTMLString
 
