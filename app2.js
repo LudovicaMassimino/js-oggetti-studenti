@@ -17,11 +17,11 @@ console.log(tBodyElement)
 
 for(let i = 0; i < studenti.length; i++){
     const studente = studenti[i]
-    const nome = studente.nome
+   /* const nome = studente.nome
     const cognome = studente.cognome
     const età = studente.età
 
-    console.log(nome, cognome, età)
+    console.log(nome, cognome, età) */
    
     appendTableHtml(studente);
 } 
@@ -62,8 +62,11 @@ function aggiungiStudente(e) {
     console.log(e);
     e.preventDefault();
 
-    const nome = document.getElementById("nome").value
+    const nomeInputElement = document.getElementById("nome")
+    const nome = nomeInputElement.value
+    const cognomeInputElement = document.getElementById("cognome")
     const cognome = document.getElementById("cognome").value
+    const etàInputElement = document.getElementById("età")
     const età = document.getElementById("età").value
 
      // creo la variabile per il nuovo studente
@@ -80,4 +83,11 @@ function aggiungiStudente(e) {
     console.log(studenti)
 
     appendTableHtml(nuovoStudente);
+
+    // per svuotare il form:
+    nomeInputElement.value = ''
+    cognomeInputElement.value = ''
+    etàInputElement.value = ''
+
+    
 } 
