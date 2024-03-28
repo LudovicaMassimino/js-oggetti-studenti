@@ -46,7 +46,8 @@ const trHTML = `
     <tr>
     <td>${member.nome}</td>
     <td>${member.cognome}</td>
-    <tr>${member.età}</tr>
+    <td>${member.età}</td>
+    </tr>
     `
 
 tBodyElement.innerHTML += trHTML
